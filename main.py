@@ -1,23 +1,28 @@
 def main():
-    file_contents = 0
+    file_path = "books/frankenstein.txt"
+    file_contents = get_book_text(file_path)
 
-    with open("books/frankenstein.txt") as f:
-        file_contents = f.read()
+    print(get_word_count(file_contents))
+    print(get_char_count(file_contents))
 
-    words = file_contents.split()
-    print(len(words))
-    print(count_characters(file_contents))
+def get_word_count(document):
+    words = document.split()
+    return len(words)
 
-def count_characters(document):
+def get_char_count(document):
     document = document.lower()
 
-    out_dic = {}
+    chars = {}
 
     for character in document:
-        if out_dic.get(character) is None:
-            out_dic[character] = 0
-        out_dic[character] += 1
+        if chars.get(character) is None:
+            chars[character] = 0
+        chars[character] += 1
 
-    return(out_dic)
+    return(chars)
+
+def get_book_text(path):
+    with open(path) as f:
+        return f.read()
 
 main()
