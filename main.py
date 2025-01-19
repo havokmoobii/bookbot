@@ -4,6 +4,8 @@ def main():
 
     print_report(file_path, file_contents)
 
+# Generates a report for the given document.
+# Lists the number of words in the document and the frequency of letters from greatest to least.
 def print_report(file_path, document):
     print(f"--- Begin report of {file_path} ---")
     print(f"{get_word_count(document)} words found in document.")
@@ -20,6 +22,7 @@ def get_word_count(document):
     words = document.split()
     return len(words)
 
+# Takes a dictionary of single characters and returns a sorted list of dictionaries of characters for the frequency of the characters.
 def sort_dict(document):
     char_count = get_char_count(document)
 
@@ -33,9 +36,12 @@ def sort_dict(document):
 
     return char_list
 
+# A function that takes a dictionary and returns the value of the "num" key
+# This is how the `.sort()` method knows how to sort the list of dictionaries
 def sort_on(dict):
     return dict["num"]
 
+# Returns a dictionary with every character and their frequency
 def get_char_count(document):
     document = document.lower()
 
